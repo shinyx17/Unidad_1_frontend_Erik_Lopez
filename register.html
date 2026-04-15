@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - SportClub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+    <header class="site-header user-theme">
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <img src="CSS/logo_empresa_letra_v1.png" alt="SportClub logo">
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html" class="active">Registro</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Crear cuenta</h1>
+        <form id="register-form" class="simple-form">
+            <label>Nombre completo
+                <input type="text" name="name" placeholder="Tu nombre" required>
+            </label>
+            <label>Correo
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+            </label>
+            <label>Contraseña
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </label>
+            <label>Información adicional (opcional)
+                <input type="text" name="info" placeholder="Deporte / interés">
+            </label>
+            <button type="submit" class="btn-ingresar">Registrar</button>
+        </form>
+
+        <script>
+            window.addEventListener('load', function(){
+                try{ document.activeElement.blur(); }catch(e){}
+            });
+
+            // Redirección del lado del cliente tras registro (solo demo)
+            document.getElementById('register-form').addEventListener('submit', function(e){
+                e.preventDefault();
+                var email = (this.email.value || '').trim().toLowerCase();
+                if(!email){ alert('Por favor ingresa un correo válido'); return; }
+                if(email === 'admin@gmail.com'){
+                    window.location.href = 'dashboard_admin.html';
+                    return;
+                }
+                if(email === 'coach@gmail.com'){
+                    window.location.href = 'dashboard_coach.html';
+                    return;
+                }
+                window.location.href = 'dashboard_user.html';
+            });
+        </script>
+        <p class="muted">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+    </main>
+</body>
+</html>

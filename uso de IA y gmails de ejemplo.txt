@@ -1,0 +1,8 @@
+Gemini: diseño de la pagina web creando el estilo de la pagina (CSS)
+
+Copilot: ayuda en la estructura de la web, correciones, redirecciones y aplicacion de diseño web
+
+GMAILS DE EJEMPLO para probar redirecciones
+- admin@gmail.com 
+- coach@gmail.com
+- cualquier otro gmail pasara a user

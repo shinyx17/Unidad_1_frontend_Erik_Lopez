@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - SportClub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body class="dashboard admin">
+    <header class="site-header admin-theme">
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <img src="CSS/logo_empresa_letra_v1.png" alt="SportClub logo">
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="dashboard_admin.html">Usuarios</a>
+            <a href="dashboard_admin.html#reportes">Reportes</a>
+            <a href="dashboard_admin.html#config">Configuración</a>
+        </nav>
+        <div class="header-actions">
+            <a class="btn-small" href="edit_profile.html">Editar perfil</a>
+            <a class="btn-small" href="login.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="container admin-layout">
+        <header class="card admin-panel">
+            <h2>Panel de Administración</h2>
+        </header>
+
+        <div class="admin-grid">
+            <section class="card users-management">
+                <h3>Gestión de Usuarios</h3>
+                <div class="search-row">
+                    <input type="search" placeholder="Buscar...">
+                    <button class="accent-btn">Buscar</button>
+                </div>
+
+                <div class="user-list">
+                    <div class="user-row"><div class="u">Nombre: juan</div><button class="primary-btn">Editar</button></div>
+                    <div class="user-row"><div class="u">Email: ana@example.com</div><button class="primary-btn">Editar</button></div>
+                    <div class="user-row"><div class="u">Rol: coach</div><button class="primary-btn">Editar</button></div>
+                </div>
+            </section>
+
+            <section class="card stats-system">
+                <h3>Estadísticas del Sistema</h3>
+                <table>
+                    <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th></th></tr></thead>
+                    <tbody>
+                        <tr><td>Juan</td><td>juan@example.com</td><td>usuario</td><td><button class="primary-btn">Editar</button></td></tr>
+                        <tr><td>Ana</td><td>ana@example.com</td><td>coach</td><td><button class="primary-btn">Editar</button></td></tr>
+                        <tr><td>Admin</td><td>admin@example.com</td><td>admin</td><td><button class="primary-btn">Editar</button></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="card reports">
+                <h3>Reportes Generales</h3>
+                <div class="report-row"><span>Informe Mensual</span><button class="primary-btn">Descargar</button></div>
+                <div class="report-row"><span>Abril</span><button class="primary-btn">Descargar</button></div>
+                <div style="margin-top:16px;"><button class="accent-btn">Configurar...</button></div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
