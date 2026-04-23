@@ -319,7 +319,8 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
     width: 100%;
     padding: 12px 15px;
     background-color: #333;
@@ -330,9 +331,38 @@ input[type="password"] {
     transition: border-color 0.3s;
 }
 
+/* Estilos especiales para inputs de email con sufijo */
+.input-group > div[style*="display: flex"] input[type="text"] {
+    width: auto;
+    flex: 1;
+    margin-right: 5px;
+}
+
 input:focus {
     outline: none;
     border-color: var(--accent); /* Resaltado al hacer clic */
+}
+
+/* --- Selects (para cambiar roles) --- */
+select {
+    padding: 10px 12px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+select option {
+    background-color: #333;
+    color: #ffffff;
 }
 
 /* --- Botón Ingresar --- */
@@ -356,6 +386,30 @@ input:focus {
 
 /* Center login button on auth pages and avoid full width */
 .auth-page .btn-ingresar { display:block; width: 220px; max-width:80%; margin: 12px auto 0; }
+
+/* --- Mensaje de Error --- */
+.error-message {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background-color: #8B0000;
+    border: 1px solid #FF0000;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* --- Divisor y Enlaces --- */
 .divider {
@@ -390,4 +444,47 @@ input:focus {
 .btn-registrar {
     font-weight: 700;
     color: var(--accent) !important; /* Destacamos el enlace de registro */
+}
+
+/* --- Colores de Roles (para parpadeo en admin) --- */
+.role-highlight-user {
+    animation: flashUser 0.8s ease-in-out 3;
+}
+
+.role-highlight-coach {
+    animation: flashCoach 0.8s ease-in-out 3;
+}
+
+.role-highlight-admin {
+    animation: flashAdmin 0.8s ease-in-out 3;
+}
+
+@keyframes flashUser {
+    0%, 100% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #1E90FF;
+        color: #ffffff;
+    }
+}
+
+@keyframes flashCoach {
+    0%, 100% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #2E8B57;
+        color: #ffffff;
+    }
+}
+
+@keyframes flashAdmin {
+    0%, 100% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #B22222;
+        color: #ffffff;
+    }
 }

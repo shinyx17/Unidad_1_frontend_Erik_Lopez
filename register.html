@@ -6,6 +6,7 @@
     <title>Registro - SportClub</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/login.css">
+    <script src="users.js"></script>
 </head>
 <body>
     <header class="site-header user-theme">
@@ -27,7 +28,10 @@
                 <input type="text" name="name" placeholder="Tu nombre" required>
             </label>
             <label>Correo
-                <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+                <div style="display: flex; align-items: center;">
+                    <input type="text" name="email" placeholder="nombre" required>
+                    <span style="margin-left: 5px; font-size: 14px;">@sportclub.cl</span>
+                </div>
             </label>
             <label>Contraseña
                 <input type="password" name="password" placeholder="Contraseña" required>
@@ -43,20 +47,30 @@
                 try{ document.activeElement.blur(); }catch(e){}
             });
 
-            // Redirección del lado del cliente tras registro (solo demo)
+            // Registro de usuario
             document.getElementById('register-form').addEventListener('submit', function(e){
                 e.preventDefault();
-                var email = (this.email.value || '').trim().toLowerCase();
-                if(!email){ alert('Por favor ingresa un correo válido'); return; }
-                if(email === 'admin@gmail.com'){
-                    window.location.href = 'dashboard_admin.html';
+                const form = this;
+                if(!form.checkValidity()){ form.reportValidity(); return; }
+                const name = (form.name.value || '').trim();
+                const emailInput = (form.email.value || '').trim().toLowerCase();
+                const password = (form.password.value || '').trim();
+                if(!name || !emailInput || !password){ alert('Por favor completa todos los campos'); return; }
+                const email = emailInput + '@sportclub.cl';
+
+                const currentUsers = loadUsersFromLocalStorage();
+                if(currentUsers.some(u => u.email === email)){
+                    alert('El correo ya está registrado');
                     return;
                 }
-                if(email === 'coach@gmail.com'){
-                    window.location.href = 'dashboard_coach.html';
-                    return;
-                }
-                window.location.href = 'dashboard_user.html';
+
+                // Agregar nuevo usuario con rol 'user'
+                const newUser = { email: email, password: password, role: 'user', name: name };
+                currentUsers.push(newUser);
+                localStorage.setItem('users', JSON.stringify(currentUsers));
+
+                alert('Registro exitoso. Ahora puedes iniciar sesión.');
+                window.location.href = 'login.html';
             });
         </script>
         <p class="muted">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>

@@ -6,6 +6,7 @@
     <title>Dashboard Coach - SportClub</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/login.css">
+    <script src="users.js"></script>
 </head>
 <body class="dashboard coach">
     <header class="site-header coach-theme">
@@ -21,14 +22,14 @@
         </nav>
         <div class="header-actions">
             <a class="btn-small" href="edit_profile.html">Editar perfil</a>
-            <a class="btn-small" href="login.html">Cerrar sesión</a>
+            <a class="btn-small" href="login.html" onclick="logout()">Cerrar sesión</a>
         </div>
     </header>
 
     <main class="container coach-layout">
         <header class="coach-panel card">
             <h2>Panel de Entrenador</h2>
-            <p>Bienvenido, Coach <strong>Nombre</strong></p>
+            <p id="welcome-message">Bienvenido, Coach</p>
         </header>
 
         <div class="coach-top">
@@ -37,22 +38,22 @@
                 <ul>
                     <li>
                         <div class="stu">
-                            <div class="stu-name">Ana López</div>
-                            <div class="stu-email">ana@example.com</div>
+                            <div class="stu-name">Max Verstappen</div>
+                            <div class="stu-email">maxv3@sportclub.cl</div>
                         </div>
                         <button class="primary-btn">Ver Progreso</button>
                     </li>
                     <li>
                         <div class="stu">
-                            <div class="stu-name">Carlos Ruiz</div>
-                            <div class="stu-email">carlos@example.com</div>
+                            <div class="stu-name">Fernando Alonso</div>
+                            <div class="stu-email">falonso14@sportclub.cl</div>
                         </div>
                         <button class="primary-btn">Ver Progreso</button>
                     </li>
                     <li>
                         <div class="stu">
-                            <div class="stu-name">María Gómez</div>
-                            <div class="stu-email">maria@example.com</div>
+                            <div class="stu-name">Lando Norris</div>
+                            <div class="stu-email">landon4@sportclub.cl</div>
                         </div>
                         <button class="primary-btn">Ver Progreso</button>
                     </li>
@@ -74,5 +75,16 @@
             </section>
         </div>
     </main>
+
+    <script>
+        // Mostrar nombre del usuario logueado
+        const user = getLoggedInUser();
+        if (user) {
+            document.getElementById('welcome-message').innerHTML = `Bienvenido, Coach <strong>${user.name}</strong>`;
+        } else {
+            // Si no hay usuario logueado, redirigir a login
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
